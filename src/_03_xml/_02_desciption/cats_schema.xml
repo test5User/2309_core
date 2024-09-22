@@ -17,5 +17,5 @@
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 		</xs:restriction>
-    </xs:simpleType>
+	</xs:simpleType>
 </xs:schema>
