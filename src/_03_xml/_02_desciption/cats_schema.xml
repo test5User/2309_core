@@ -2,20 +2,25 @@
 	<xs:element name="cats">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="cat" type="CsvCat" maxOccurs="unbounded"/>
+				<xs:element name="cat" type="SomeType" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="CsvCat">
+	<xs:complexType name="SomeType">
 		<xs:sequence>
 			<xs:element name="name" type="notEmptyString"/>
-			<xs:element name="age" type="xs:positiveInteger"/>
+			<xs:element name="age" type="moreThan3Years"/>
 		</xs:sequence>
 		<xs:attribute name="number" type="xs:positiveInteger"/>
 	</xs:complexType>
   	<xs:simpleType name="notEmptyString">
 		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
+			<xs:minExclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="moreThan3Years">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
