@@ -6,9 +6,14 @@ import lombok.AllArgsConstructor;
 public class BankAccount {
     private long balance;
 
-    public synchronized void withdraw(long amount) {
-        var newBalance = balance - amount;
-        balance = newBalance;
+    private final Object lock = new Object();
+
+    //public synchronized void withdraw(long amount) {
+    public void withdraw(long amount) {
+        synchronized (lock) {
+            var newBalance = balance - amount;
+            balance = newBalance;
+        }
     }
 
     public synchronized void deposit(long amount) {
